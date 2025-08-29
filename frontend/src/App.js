@@ -1,7 +1,7 @@
 /* global chrome */
 import { useState, useEffect } from "react";
 import "./styles/popup.css";   // Popup UI styles
-import Advice from "./components/Advice"; // Random advice component
+import Summary from "./components/Summary"; // ✅ Updated import
 
 function App() {
   const [data, setData] = useState([]);     // Scraped data storage
@@ -28,19 +28,18 @@ function App() {
   };
 
   // ✅ Get scraped data from content.js
-const getData = () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (!tabs[0]) return;
-    chrome.tabs.sendMessage(tabs[0].id, { action: "getData" }, (response) => {
-      if (chrome.runtime.lastError) {
-        console.warn("No content script:", chrome.runtime.lastError.message);
-        return;
-      }
-      if (response) setData(response);
+  const getData = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (!tabs[0]) return;
+      chrome.tabs.sendMessage(tabs[0].id, { action: "getData" }, (response) => {
+        if (chrome.runtime.lastError) {
+          console.warn("No content script:", chrome.runtime.lastError.message);
+          return;
+        }
+        if (response) setData(response);
+      });
     });
-  });
-};
-
+  };
 
   // ✅ Clear scraped data + remove highlights
   const clearData = () => {
@@ -109,9 +108,9 @@ const getData = () => {
       >
         Export CSV
       </button>
-
-      {/* Extra Feature: Advice Component */}
-      <Advice />
+        <br/>
+      {/* ✅ New Feature: Gemini Summary Component */}
+      <Summary scrapedData={data.map((d) => d.text)} />
     </div>
   );
 }
