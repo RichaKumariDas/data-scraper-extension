@@ -1,8 +1,7 @@
 // src/api.js
 // Handles Gemini API requests (summarizing scraped data)
 
-const GEMINI_API_KEY = "AIzaSyCx7_Ms2i36LpLMEoUlZJ_1aRJFId3kst8";
-
+import { GEMINI_API_KEY } from "./config";
 /**
  * Sends text to Gemini API and gets a summarized response.
  * @param {string} text - The scraped data to summarize.
