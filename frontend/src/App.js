@@ -28,13 +28,19 @@ function App() {
   };
 
   // ✅ Get scraped data from content.js
-  const getData = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { action: "getData" }, (response) => {
-        if (response) setData(response);
-      });
+const getData = () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs[0]) return;
+    chrome.tabs.sendMessage(tabs[0].id, { action: "getData" }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.warn("No content script:", chrome.runtime.lastError.message);
+        return;
+      }
+      if (response) setData(response);
     });
-  };
+  });
+};
+
 
   // ✅ Clear scraped data + remove highlights
   const clearData = () => {

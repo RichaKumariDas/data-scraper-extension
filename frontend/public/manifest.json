@@ -16,12 +16,19 @@
     "48": "icon-48.png",
     "128": "icon-128.png"
   },
-  "permissions": ["scripting", "activeTab"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "css": ["content.css"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ]
 }
