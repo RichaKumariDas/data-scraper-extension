@@ -1,0 +1,21 @@
+/* =====================================================
+   File: content.css
+   Purpose:
+     - Provides visual feedback for elements selected 
+       by the user while scraping data.
+     - Injected into webpages via content.js.
+   Notes:
+     - The .ds-highlight class is dynamically applied
+       and removed from elements as the user selects/deselects.
+     - Ensures clear visibility without altering page layout.
+   ===================================================== */
+
+
+/* ------------------------------
+   Highlight Style for Selections
+   ------------------------------ */
+.ds-highlight {
+  outline: 2px dashed #ff4757 !important;       /* Red dashed border for visibility */
+  background-color: rgba(255, 223, 186, 0.35) !important; /* Light overlay for emphasis */
+  cursor: crosshair !important;                 /* Indicates selection mode */
+}
