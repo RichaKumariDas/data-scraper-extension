@@ -130,46 +130,61 @@ html, body {
 }
 
 /* ------------------------------
-   Advice Section
+   Summary Box
 ------------------------------- */
-.advice-box {
-  margin-top: 18px;
+.summary-box {
+  margin-top: 14px;
   padding: 14px;
-  background: var(--gray-dark);
   border-radius: 10px;
+  background: var(--gray-dark);
   border: 1px solid var(--yellow-dark);
-  box-shadow: 0 0 20px rgba(255, 234, 0, 0.6);
-  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 234, 0, 0.5);
   width: 100%;
-  box-sizing: border-box;
+  max-height: 200px;
+  overflow-y: auto;
 }
-.advice-box h2 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--yellow);
+
+/* Summary title */
+.summary-box .ds-title {
+  font-size: 18px;
   margin-bottom: 10px;
+  color: var(--yellow);
+  text-align: center;
   text-shadow: 0 0 10px rgba(255, 234, 0, 0.8);
 }
-.advice-box button {
-  margin: 10px auto;
-  display: block;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
+
+/* Summary text (yellow like scraped items) */
+.summary-box .ds-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--yellow);
+  white-space: pre-line;
+}
+
+/* Empty state */
+.summary-box .ds-empty {
+  font-size: 13px;
+  color: rgba(255, 234, 0, 0.6);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Button row inside summary */
+.summary-box .ds-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.summary-box .ds-btn {
   background: var(--yellow);
   color: #000;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.advice-box button:hover { background: var(--yellow-dark); }
-.advice-box p {
-  margin-top: 10px;
-  font-style: italic;
   font-size: 14px;
-  color: var(--yellow);
-  text-shadow: 0 0 6px rgba(255, 234, 0, 0.6);
+  padding: 6px 12px;
 }
+.summary-box .ds-btn:hover {
+  background: var(--yellow-dark);
+}
+
 
 /* ------------------------------
    Custom Scrollbar Theme
